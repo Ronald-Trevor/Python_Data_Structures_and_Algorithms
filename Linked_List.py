@@ -79,6 +79,15 @@ class LinkedList:
 			cur_node = None
 
 
+	def len_of_list(self):
+		cur_node = self.head
+		count = 0
+		while cur_node:
+			count += 1
+			cur_node = cur_node.next
+
+		return count
+
 llist = LinkedList()
 llist.append("A")
 llist.append("B")
@@ -89,6 +98,7 @@ llist.append("G")
 llist.append("F")
 llist.preppend("D")
 
+print(llist.len_of_list())
 llist.insert_after_node(llist.head.next,"E")
 
 llist.delete_node("D")
@@ -97,6 +107,7 @@ llist.delete_node("C")
 llist.delete_node_at_pos(2)
 
 llist.printlist()
+print(llist.len_of_list())
 
 
 
