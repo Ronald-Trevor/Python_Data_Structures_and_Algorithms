@@ -7,3 +7,5 @@ using the iterative method.
 
 The swap_nodes function is used to swap nodes in the list based on their 
 key values which are passed as arguments when the function is called 
+
+The reverse_nodes function is used to reverse nodes of a linked list iteratively

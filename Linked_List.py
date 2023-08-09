@@ -120,6 +120,18 @@ class LinkedList:
 
 		cur1.next,cur2.next = cur2.next,cur1.next
 
+	# Reversing nodes of a linked list
+	def reverse_nodes(self):
+		prev = None 
+		cur = self.head
+
+		while cur:
+			nxt = cur.next
+			cur.next = prev
+			prev = cur
+			cur = nxt 
+		self.head = prev 
+
 llist = LinkedList()
 llist.append("A")
 llist.append("B")
@@ -130,19 +142,30 @@ llist.append("G")
 llist.append("F")
 llist.preppend("D")
 llist.printlist()
+
+print("\n")
+
 llist.swap_nodes("C","F")
 llist.printlist()
 print(llist.len_of_list())
 
 llist.insert_after_node(llist.head.next,"E")
 
+print("\n")
+
 llist.delete_node("D")
 llist.delete_node("C")
 
 llist.delete_node_at_pos(2)
 
+print("\n")
+
 llist.printlist()
 print(llist.len_of_list())
 
+print("\n")
+
+llist.reverse_nodes()
+llist.printlist()
 
 
