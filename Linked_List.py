@@ -130,7 +130,44 @@ class LinkedList:
 			cur.next = prev
 			prev = cur
 			cur = nxt 
-		self.head = prev 
+		self.head = prev
+
+
+	def merge_lists(self, list1):
+		p = self.head
+		q = list1.head
+		s = None 
+
+		if not p:
+			return q
+		if not q:
+			return p 
+		if p and q:
+			if p.data <= q.data:
+				s= p
+				p = s.next
+			else:
+				s = q
+				q = s.next
+			new_head = s  
+
+		while p and q:
+			if p.data <= q.data:
+				s.next = p 
+				s = p 
+				p = s.next
+			else:
+				s.next = q
+				s= q
+				q = s.next
+		if not p:
+			s.next = q 
+		if not q:
+			s.next = p 
+
+		self.head = new_head
+		return self.head 
+ 
 
 llist = LinkedList()
 llist.append("A")
@@ -167,5 +204,25 @@ print("\n")
 
 llist.reverse_nodes()
 llist.printlist()
+list1 = LinkedList()
+list2 = LinkedList()
+list1.append(1)
+list1.append(5)
+list1.append(7)
+list1.append(9)
+list1.append(10)
 
+list2.append(2)
+list2.append(3)
+list2.append(4)
+list2.append(6)
+list2.append(8)
+
+print("\n")
+list1.printlist()
+print("\n")
+list2.printlist()
+print('\n')
+list1.merge_lists(list2)
+list1.printlist()
 
