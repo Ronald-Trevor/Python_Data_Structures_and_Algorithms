@@ -167,7 +167,21 @@ class LinkedList:
 
 		self.head = new_head
 		return self.head 
- 
+	def remove_duplicates(self):
+		prev = None 
+		cur = self.head
+		duplicates = dict()
+
+		while cur:
+			if cur.data in duplicates:
+				prev.next = cur.next
+				cur = None 
+			else:
+				duplicates[cur.data] = 1
+				prev = cur 
+			cur = prev.next
+
+
 
 llist = LinkedList()
 llist.append("A")
@@ -225,4 +239,13 @@ list2.printlist()
 print('\n')
 list1.merge_lists(list2)
 list1.printlist()
-
+print("\n")
+list3 = LinkedList()
+list3.append(1)
+list3.append(6)
+list3.append(2)
+list3.append(2)
+list3.append(4)
+list3.append(1)
+list3.remove_duplicates()
+list3.printlist()
