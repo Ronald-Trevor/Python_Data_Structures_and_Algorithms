@@ -182,6 +182,18 @@ class LinkedList:
 			cur = prev.next
 
 
+	def nth_node(self,n):
+		total_length = self.len_of_list()
+		cur = self.head
+		while cur :
+			if total_length == n:
+				print(cur.data)
+				return cur.data
+			total_length -= 1 
+			cur = cur.next
+		if cur is None :
+			return 
+
 
 llist = LinkedList()
 llist.append("A")
@@ -249,3 +261,5 @@ list3.append(4)
 list3.append(1)
 list3.remove_duplicates()
 list3.printlist()
+print("\n Nth node os list 3")
+list3.nth_node(3)
