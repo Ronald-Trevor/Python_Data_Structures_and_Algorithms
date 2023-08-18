@@ -195,6 +195,44 @@ class LinkedList:
 			return 
 
 
+	def count_occurences(self,data):
+		count = 0
+		cur = self.head 
+		while cur :
+			if cur.data == data:
+				count += 1
+			cur = cur.next
+		return count 
+
+	def rotate(self,k):
+		if self.head and self.head.next :
+			p = self.head 
+			q = self.head 
+			prev = None 
+			count = 0
+
+			while p and count < k:
+				prev = p 
+				p = p.next 
+				q = q.next 
+				count += 1
+			p = prev  
+			while q :
+				prev = q
+				q = q.next 
+			q = prev 
+			q.next = self.head
+			self.head = p.next  
+			p.next = None 
+	def is_palindrome(self):
+		s =" "
+		p = self.head 
+		while p:
+			s += p.data
+			p = p.next
+		return s == s[::-1]
+
+
 llist = LinkedList()
 llist.append("A")
 llist.append("B")
@@ -205,7 +243,7 @@ llist.append("G")
 llist.append("F")
 llist.preppend("D")
 llist.printlist()
-
+print(llist.is_palindrome())
 print("\n")
 
 llist.swap_nodes("C","F")
@@ -259,6 +297,11 @@ list3.append(2)
 list3.append(2)
 list3.append(4)
 list3.append(1)
+list3.rotate(3)
+list3.printlist()
+print("\n")
+print(list3.count_occurences(2))
+print("\n")
 list3.remove_duplicates()
 list3.printlist()
 print("\n Nth node os list 3")
