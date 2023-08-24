@@ -99,6 +99,40 @@ class CircularLinkedList:
 		print("\n")
 		split_list.print_list()
 
+	def remove_node(self,node):
+		if self.head:
+			if self.head == node:
+				cur = self.head
+				while cur.next != self.head :
+					cur = cur.next 
+				if self.head == self.head.next :
+					self.head = None 
+				else:
+					cur.next = self.head.next
+					self.head = self.head.next
+			else:
+				cur = self.head 
+				prev = None 
+				while cur.next != self.head:
+					prev = cur
+					cur = cur.next 
+					if cur == node:
+						prev.next = cur.next 
+						cur = cur.next
+
+	def josephus_problem(self,step):
+		cur = self.head
+		length = len(self)
+		while length > 1:
+			count = 1
+			while count != step:
+				cur = cur.next
+				count += 1
+			print("KILL" + str(cur.data))
+			self.remove_node(cur)
+			cur = cur.next
+			length -= 1 
+
 
 list1 = CircularLinkedList()
 list1.append("C")
@@ -109,7 +143,7 @@ list1.print_list()
 print("\n")
 list1.remove("C")
 list1.print_list()
-
+print("\n")
 llist = CircularLinkedList()
 llist.append("A")
 llist.append("B")
@@ -119,3 +153,11 @@ llist.append("E")
 llist.append("F")
 
 llist.split_list()
+print("\n")
+list2 = CircularLinkedList()
+list2.append("A")
+list2.append("B")
+list2.append("C")
+list2.append("D")
+list2.josephus_problem(2)
+list2.print_list()
